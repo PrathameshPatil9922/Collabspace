@@ -1,0 +1,33 @@
+<div class="flex h-screen">
+    <!-- Sidebar -->
+    <div class="w-64 bg-gray-800 text-white p-4">
+        <h2 class="text-xl font-bold">Whiteboard Tools</h2>
+        <div class="mt-4">
+            <button (click)="selectTool('pen')" class="w-full bg-blue-500 text-white p-2 mb-2 rounded">Pen</button>
+            <button (click)="selectTool('eraser')" class="w-full bg-red-500 text-white p-2 mb-2 rounded">Eraser</button>
+            <button (click)="selectTool('highlight')"
+                class="w-full bg-yellow-500 text-white p-2 mb-2 rounded">Highlight</button>
+            <button (click)="selectTool('ppt')" class="w-full bg-green-500 text-white p-2 mb-2 rounded">PPT</button>
+            <button (click)="selectTool('diagram')"
+                class="w-full bg-purple-500 text-white p-2 mb-2 rounded">Diagram</button>
+        </div>
+        <div class="mt-4">
+            <input type="color" (change)="changeColor($event)" class="w-full p-2 rounded" />
+        </div>
+        <div class="mt-4" *ngIf="currentTool === 'ppt'">
+            <input type="file" (change)="onFileChange($event)" class="mb-4" />
+            <div *ngIf="pptFile">
+                <iframe [src]="pptFile" class="w-full h-96 border"></iframe>
+            </div>
+        </div>
+        <div class="mt-4" *ngIf="currentTool === 'diagram'">
+            <h2 class="text-xl font-bold">Diagram Components</h2>
+            <!-- Diagram component functionalities -->
+        </div>
+    </div>
+    <!-- Whiteboard Canvas -->
+    <div class="flex-1 bg-white relative">
+        <canvas #canvas class="w-full h-full border" (mousedown)="onMouseDown($event)" (mouseup)="onMouseUp($event)"
+            (mousemove)="onMouseMove($event)"></canvas>
+    </div>
+</div>

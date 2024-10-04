@@ -1,0 +1,7 @@
+<mat-nav-list>
+    <h3 mat-subheader>Files</h3>
+    <mat-list-item *ngFor="let file of files" (click)="openFile(file)">
+        <mat-icon mat-list-icon>insert_drive_file</mat-icon>
+        <h4 mat-line>{{file.name}}</h4>
+    </mat-list-item>
+</mat-nav-list>

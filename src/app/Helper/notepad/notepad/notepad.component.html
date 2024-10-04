@@ -1,0 +1,27 @@
+<div class="notepad-container">
+  <h2>Notes Maker</h2>
+
+  <!-- Input to enter the title of the note -->
+  <div class="note-operations">
+    <input type="text" [(ngModel)]="noteTitle" placeholder="Enter note title" />
+    <button (click)="createNote()">Create Note</button>
+  </div>
+
+  <!-- List of notes -->
+  <div class="note-list">
+    <h3>Notes:</h3>
+    <ul>
+      <li *ngFor="let note of notes">
+        <span (click)="openNote(note)">{{ note.title }}</span>
+        <button class="delete-btn" (click)="deleteNote(note)">Delete</button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Text area for note content -->
+  <div class="note-editor" *ngIf="selectedNote">
+    <h3>Editing: {{ selectedNote.title }}</h3>
+    <textarea [(ngModel)]="selectedNote.content" rows="10"></textarea>
+    <button (click)="updateNote()">Save Changes</button>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="custom-snackbar">
+    <mat-icon>{{data?.icon}}</mat-icon>
+    &nbsp;
+    <span>{{data?.message}}</span>
+    <div class="spacer">
+        <button mat-button (click)="closeSnackBar()">
+            {{data?.action}}
+        </button>
+    </div>
+</div>

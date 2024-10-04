@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+ngx-codemirror {
+    height: 500px;
+    /* Adjust height as needed */
+}
+
+button {
+    cursor: pointer;
+}
