@@ -1,0 +1,42 @@
+/* styles.css or component-specific CSS file */
+
+/* Add shadow effect */
+.shadow-lg {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    /* Adjust shadow properties for better visibility */
+}
+
+/* Additional styles */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Smooth transition for background and text colors */
+}
+
+body.dark {
+    background-color: #1a202c;
+    /* Dark background color */
+    color: #f7fafc;
+    /* Light text color */
+}
+
+.bg-gray-900 {
+    background-color: #4a5568;
+    /* Adjusted background color for the toolbar in light mode */
+}
+
+.bg-gray-100 {
+    background-color: #ffffff;
+    /* Light background color for the toolbar in dark mode */
+}
+
+.mat-toolbar {
+    transition: background-color 0.3s ease;
+    /* Smooth transition for toolbar background color */
+}
+
+.mat-toolbar .flex-grow {
+    flex: 1;
+    /* Ensure title takes up remaining space */
+    text-align: center;
+    /* Center align the title */
+}

@@ -1,0 +1,8 @@
+<mat-dialog-content>
+    <h3>Add Collaborators</h3>
+    <p>Room ID: {{ roomId }}</p>
+    <button (click)="copyRoomId()">Copy Room ID</button>
+    <input type="email" placeholder="Enter email to invite" />
+    <button (click)="sendInvite()">Send Invite</button>
+    <button (click)="addMoreCollaborators()">Add More</button>
+</mat-dialog-content>

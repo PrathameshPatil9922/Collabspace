@@ -1,6 +1,9 @@
 <div class="flex flex-col min-h-screen min-w-full bg-slate-200 dark:bg-slate-700 none"
   [ngClass]="darkModeService.darkModeSignal()">
-  <app-header></app-header>
+
+  <!-- Conditionally show header and footer -->
+  <app-header *ngIf="showHeaderFooter"></app-header>
   <router-outlet></router-outlet>
-  <app-footer></app-footer>
+  <app-footer *ngIf="showHeaderFooter"></app-footer>
+
 </div>

@@ -1,0 +1,17 @@
+<div class="sidenav-header">
+    <img [width]="logosize()" [height]="logosize()" src="collabspace_logo.png" class="mx-auto rounded-full" />
+    <div class="header-text" [class.hide-header-text]="sidenavCollapsed()">
+        <br>
+        <h2 class="text-lg font-semibold">CollabSpace</h2>
+    </div>
+    <br>
+    <br>
+</div>
+
+
+
+<mat-nav-list>
+    <a mat-list-item *ngFor="let item of menuItems()" class="menu-item">
+        <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+    </a>
+</mat-nav-list>

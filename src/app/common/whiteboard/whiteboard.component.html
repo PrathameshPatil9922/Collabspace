@@ -1,0 +1,11 @@
+<app-toolbar [collapsed]="collapsed()" (toggleSidenav)="toggleSidenav()"></app-toolbar>
+<!-- Pass the collapsed state and listen for toggle -->
+
+<mat-sidenav-container>
+    <mat-sidenav mode="side" [opened]="true" [style.width]="sidenavwidth()">
+        <app-sidenav [collapsed]="collapsed()"></app-sidenav>
+    </mat-sidenav>
+    <mat-sidenav-content class="content" [style.margin-left]="sidenavwidth()">
+        <app-drawing-canvas></app-drawing-canvas>
+    </mat-sidenav-content>
+</mat-sidenav-container>

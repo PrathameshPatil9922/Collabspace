@@ -2,7 +2,12 @@
 module.exports = {
   darkMode: 'class',
   content: [
-    "./src/**/*.{html,ts}",
+    './auth/**/*.{html,ts,js}',
+    './pages/**/*.{html,js}',
+    './common/**/*.html.js}',
+    './components/**/*.{html,js',
+    './src/**/*.{html,ts}', // Include all Angular files
+    './projects/**/*.{html,ts}'
   ],
   theme: {
     extend: {

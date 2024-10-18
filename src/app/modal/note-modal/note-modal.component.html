@@ -1,0 +1,17 @@
+<!-- src/app/components/note-modal/note-modal.component.html -->
+<div class="modal-overlay" (click)="close()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <h2 class="text-xl mb-4">Create New Note</h2>
+        <input type="text" [(ngModel)]="note.title" placeholder="Title" class="border rounded p-2 mb-2 w-full" />
+        <input type="text" [(ngModel)]="note.description" placeholder="Description"
+            class="border rounded p-2 mb-2 w-full" />
+        <div class="modal-actions">
+            <button (click)="createNote()" class="bg-blue-500 text-white rounded-md px-4 py-2 mr-2">
+                Save
+            </button>
+            <button (click)="close()" class="bg-red-500 text-white rounded-md px-4 py-2">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>

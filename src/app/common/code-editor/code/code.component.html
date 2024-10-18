@@ -1,0 +1,156 @@
+<div class="code-editor-container transition-all duration-500 p-10"
+    [ngClass]="isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-800'">
+    <!-- File Name and Extension Input -->
+    <div class="flex justify-between items-center mb-4">
+        <!-- File Name Input with Edit Button -->
+        <div class="flex items-center space-x-2">
+            <div class="relative">
+                <input type="text" [(ngModel)]="fileName" (ngModelChange)="onFileNameChange()"
+                    [disabled]="!isEditingFileName"
+                    class="file-name-input w-48 p-2 border rounded focus:outline-none focus:ring-2 transition-all duration-300"
+                    [ngClass]="isDarkMode ? 'bg-gray-800 border-gray-600 text-white' : 'bg-gray-200 border-gray-300 text-gray-800'"
+                    placeholder="Untitled" />
+                <button
+                    class="absolute inset-y-0 right-0 p-2 bg-blue-500 text-white rounded-r hover:bg-blue-600 transition-colors"
+                    (click)="toggleEditFileName()">
+                    <i class="fas" [ngClass]="isEditingFileName ? 'fa-check' : 'fa-edit'"></i>
+                </button>
+            </div>
+            <select [(ngModel)]="selectedExtension" (change)="onExtensionChange()"
+                class="w-24 p-2 border rounded focus:outline-none focus:ring-2 transition-all duration-300"
+                [ngClass]="isDarkMode ? 'bg-gray-800 border-gray-600 text-white' : 'bg-gray-200 border-gray-300 text-gray-800'">
+                <option value="txt">.txt</option>
+                <option value="js">.js</option>
+                <option value="java">.java</option>
+                <option value="py">.py</option>
+                <option value="html">.html</option>
+            </select>
+        </div>
+        <button (click)="saveFileAsPDF()"
+            class="p-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none">
+            Save
+        </button>
+    </div>
+
+    <!-- Controls Section -->
+    <div class="controls-container flex justify-between items-center mb-4">
+        <div class="button-group flex space-x-2">
+            <div class="button-container">
+                <button class="icon-button p-2 bg-gray-200 hover:bg-gray-300 rounded transition-all duration-300"
+                    [ngClass]="isDarkMode ? 'bg-gray-800 hover:bg-gray-700 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-800'"
+                    (click)="changeFontSize(true)">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <div class="button-label text-sm mt-1 text-center">Increase</div>
+            </div>
+            <div class="button-container">
+                <button class="icon-button p-2 bg-gray-200 hover:bg-gray-300 rounded transition-all duration-300"
+                    [ngClass]="isDarkMode ? 'bg-gray-800 hover:bg-gray-700 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-800'"
+                    (click)="changeFontSize(false)">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <div class="button-label text-sm mt-1 text-center">Decrease</div>
+            </div>
+        </div>
+
+        <!-- Dark Mode Toggle -->
+        <div class="button-container">
+            <button class="icon-button p-2 rounded transition-all duration-300"
+                [ngClass]="isDarkMode ? 'bg-yellow-500 hover:bg-yellow-400 text-white' : 'bg-gray-800 hover:bg-gray-700 text-white'"
+                (click)="toggleDarkMode()">
+                <i class="fas" [ngClass]="isDarkMode ? 'fa-sun' : 'fa-moon'"></i>
+            </button>
+            <div class="button-label text-sm mt-1 text-center">{{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}</div>
+        </div>
+    </div>
+
+    <!-- Save, Undo, Redo, Run Section -->
+    <div class="controls-container flex justify-between mb-4">
+        <div class="button-group flex space-x-2">
+            <div class="button-container">
+                <button class="icon-button p-2 bg-gray-200 hover:bg-gray-300 rounded transition-all duration-300"
+                    [ngClass]="isDarkMode ? 'bg-gray-800 hover:bg-gray-700 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-800'"
+                    (click)="saveCode()">
+                    <i class="fas fa-save"></i>
+                </button>
+                <div class="button-label text-sm mt-1 text-center">Save</div>
+            </div>
+            <div class="button-container">
+                <button class="icon-button p-2 bg-gray-200 hover:bg-gray-300 rounded transition-all duration-300"
+                    [ngClass]="isDarkMode ? 'bg-gray-800 hover:bg-gray-700 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-800'"
+                    (click)="undo()">
+                    <i class="fas fa-undo"></i>
+                </button>
+                <div class="button-label text-sm mt-1 text-center">Undo</div>
+            </div>
+            <div class="button-container">
+                <button class="icon-button p-2 bg-gray-200 hover:bg-gray-300 rounded transition-all duration-300"
+                    [ngClass]="isDarkMode ? 'bg-gray-800 hover:bg-gray-700 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-800'"
+                    (click)="redo()">
+                    <i class="fas fa-redo"></i>
+                </button>
+                <div class="button-label text-sm mt-1 text-center">Redo</div>
+            </div>
+            <div class="button-container">
+                <button
+                    class="icon-button p-2 bg-green-500 hover:bg-green-600 text-white rounded transition-all duration-300"
+                    (click)="runCode()">
+                    <i class="fas fa-play"></i>
+                </button>
+                <div class="button-label text-sm mt-1 text-center">Run</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Language and Theme Section -->
+    <div class="dropdown-group flex space-x-4 mb-4">
+        <div class="dropdown-container w-1/2">
+            <label for="language" class="block text-sm font-medium"
+                [ngClass]="isDarkMode ? 'text-gray-300' : 'text-gray-700'">Language</label>
+            <select id="language" (change)="selectLanguage()"
+                class="w-full p-2 border rounded focus:outline-none focus:ring-2 transition-all duration-300"
+                [ngClass]="isDarkMode ? 'bg-gray-800 border-gray-600 text-white' : 'bg-gray-200 border-gray-300 text-gray-800'">
+                <option value="javascript">JavaScript</option>
+                <option value="python">Python</option>
+                <option value="text/x-csrc">C</option>
+                <option value="text/x-c++src">C++</option>
+                <option value="java">Java</option>
+                <option value="htmlmixed">HTML</option>
+                <option value="css">CSS</option>
+                <option value="sql">SQL</option>
+            </select>
+        </div>
+
+        <div class="dropdown-container w-1/2">
+            <label for="theme" class="block text-sm font-medium"
+                [ngClass]="isDarkMode ? 'text-gray-300' : 'text-gray-700'">Theme</label>
+            <select id="theme" (change)="selectTheme()"
+                class="w-full p-2 border rounded focus:outline-none focus:ring-2 transition-all duration-300"
+                [ngClass]="isDarkMode ? 'bg-gray-800 border-gray-600 text-white' : 'bg-gray-200 border-gray-300 text-gray-800'">
+                <option selected>default</option>
+                <option>monokai</option>
+                <option>3024-day</option>
+                <option>3024-night</option>
+                <option>material</option>
+                <option>material-darker</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Code Editor Section -->
+    <div class="editor-container mb-4">
+        <form>
+            <textarea id="code" name="code" (input)="onCodeChange($event)"
+                class="code-textarea w-full h-64 p-4 rounded shadow-sm focus:outline-none focus:ring-2 transition-all duration-300"
+                [ngClass]="isDarkMode ? 'bg-gray-800 text-white border-gray-600' : 'bg-white text-gray-800 border-gray-300'"></textarea>
+        </form>
+    </div>
+
+    <!-- Output Section -->
+    <div class="output-container bg-gray-100 p-4 rounded-lg shadow"
+        [ngClass]="isDarkMode ? 'bg-gray-800 text-white' : 'bg-gray-100 text-gray-800'">
+        <h2 class="font-semibold mb-2">Output</h2>
+        <div id="output" class="output-box p-4 bg-gray-200 rounded-lg"
+            [ngClass]="isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-200 text-gray-800'">{{ output }}</div>
+    </div>
+</div>

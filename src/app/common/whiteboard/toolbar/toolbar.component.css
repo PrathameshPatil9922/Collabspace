@@ -1,0 +1,27 @@
+mat-toolbar {
+    position: relative;
+    z-index: 5;
+    background-color: dimgray;
+    /* Set toolbar background color */
+    color: yellow;
+    /* Set text color */
+}
+
+.title {
+    margin-left: 8px;
+    font-weight: bold;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.button-group {
+    display: flex;
+    gap: 16px;
+    /* Equal spacing between buttons */
+}
+
+.heart-button {
+    margin-left: 16px;
+}

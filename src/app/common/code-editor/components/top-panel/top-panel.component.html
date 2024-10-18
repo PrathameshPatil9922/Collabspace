@@ -1,0 +1,37 @@
+<div [ngClass]="{'bg-gray-900 text-white': isDarkMode, 'bg-orange-200 text-gray-900': !isDarkMode}"
+    class="shadow-lg rounded-b-lg border sticky ">
+    <mat-toolbar class="flex items-center justify-between p-4 ">
+        <!-- Menu button on the left -->
+        <button mat-icon-button (click)="collapsed.set(!collapsed())" class="focus:outline-none">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <span class="text-xl font-bold flex-grow text-center">Editor</span>
+
+        <div class="flex items-center space-x-4">
+            <!-- Dark/Light Mode Toggle -->
+            <button mat-icon-button (click)="toggleTheme()" class="focus:outline-none" title="Toggle Theme">
+                <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
+            </button>
+
+            <!-- User profile section -->
+            <div class="flex items-center space-x-2">
+                <img src="path/to/user/profile-image.jpg" alt="User Profile"
+                    class="w-8 h-8 rounded-full border border-gray-400" />
+                <span class="hidden md:block">Username</span> <!-- Dynamic username -->
+                <button mat-icon-button class="focus:outline-none" title="Favorites">
+                    <mat-icon class="text-red-500">favorite</mat-icon> <!-- Heart icon with red color -->
+                </button>
+            </div>
+        </div>
+    </mat-toolbar>
+</div>
+
+<mat-sidenav-container class="sidenav box-border">
+    <mat-sidenav style="background-color:white;" opened mode="side" [style.width]="sidenavWidth()">
+        <app-left-panel [collapsed]="collapsed()" class="sidebar" />
+    </mat-sidenav>
+    <mat-sidenav-content class="content" [style.margin-left]="sidenavWidth()">
+        <app-code />
+    </mat-sidenav-content>
+</mat-sidenav-container>

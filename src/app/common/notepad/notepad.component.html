@@ -1,0 +1,10 @@
+<app-notes-toolbar [collapsed]="collapsed()" (toggleSidenav)="toggleSidenav()"></app-notes-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav mode="side" [opened]="true" [style.width]="sidenavwidth()">
+    <app-notes-sidenav [collapsed]="collapsed()"></app-notes-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content class="content" [style.margin-left]="sidenavwidth()">
+    <app-notes></app-notes>
+  </mat-sidenav-content>
+</mat-sidenav-container>

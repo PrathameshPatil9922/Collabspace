@@ -1,0 +1,16 @@
+.canvas-container {
+    position: relative;
+}
+
+canvas {
+    cursor: crosshair;
+}
+
+.controls {
+    margin-top: 10px;
+}
+
+button {
+    margin-right: 30px;
+
+}

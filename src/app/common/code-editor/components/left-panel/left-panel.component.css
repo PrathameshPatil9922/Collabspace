@@ -1,0 +1,40 @@
+/* left-panel.component.css */
+.sidenav-header {
+    padding-top: 24px;
+    /* Adjust for spacing */
+    text-align: center;
+}
+
+.sidenav-header img {
+    border-radius: 100%;
+    /* Keep rounded shape for profile image */
+    object-fit: cover;
+    /* Ensure image fits well */
+    margin-bottom: 10px;
+    /* Space below image */
+}
+
+.header-text h2 {
+    margin: 0;
+    /* No margin */
+    font-size: 1rem;
+    /* Font size */
+    line-height: 1.5rem;
+    /* Line height */
+}
+
+.header-text p {
+    margin: 0;
+    /* No margin */
+    font-size: 0.8rem;
+    /* Font size */
+}
+
+.hide-header-text {
+    opacity: 0;
+    /* Hide text */
+    height: 0px;
+    /* No height */
+}
+
+/* Add any additional custom styles you need */

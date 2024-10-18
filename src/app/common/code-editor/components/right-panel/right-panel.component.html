@@ -1,0 +1,6 @@
+<mat-nav-list>
+    <mat-list-item *ngFor="let tool of tools" (click)="selectTool(tool)">
+        <mat-icon>{{ tool.icon }}</mat-icon>
+        <span>{{ tool.name }}</span>
+    </mat-list-item>
+</mat-nav-list>

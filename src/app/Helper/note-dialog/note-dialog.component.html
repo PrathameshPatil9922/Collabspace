@@ -1,0 +1,23 @@
+<div class="p-6">
+    <h2 class="text-lg font-bold mb-4">Create Note</h2>
+    <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700">Title</label>
+        <input type="text" [(ngModel)]="noteTitle" class="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+            placeholder="Enter note title" />
+    </div>
+    <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700">Category</label>
+        <select [(ngModel)]="noteCategory" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+            <option value="Work">Work</option>
+            <option value="Personal">Personal</option>
+            <option value="Study">Study</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
+    <div class="flex justify-end">
+        <button mat-button (click)="cancel()"
+            class="mr-2 px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400">Cancel</button>
+        <button mat-button (click)="createNote()"
+            class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Create</button>
+    </div>
+</div>

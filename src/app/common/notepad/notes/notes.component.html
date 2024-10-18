@@ -1,0 +1,28 @@
+<!-- src/app/components/notes/notes.component.html -->
+<div class="container mx-auto p-5 bg-gray-100 dark:bg-gray-900 min-h-screen">
+  <h1 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">Notes Dashboard</h1>
+  <button (click)="openCreateNoteDialog()"
+    class="bg-blue-500 text-white rounded-md px-4 py-2 mb-4 shadow hover:bg-blue-600 transition">
+    Create New Note
+  </button>
+
+  <!-- Notes Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div *ngFor="let note of notes"
+      class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg shadow p-4 transition hover:shadow-lg">
+      <div class="card-body">
+        <h5 class="card-title text-lg font-semibold text-gray-800 dark:text-gray-200">{{ note.title }}</h5>
+        <p class="card-text text-gray-600 dark:text-gray-400">{{ note.description | slice: 0:100 }}...</p>
+        <p class="text-gray-500 text-sm dark:text-gray-400">{{ note.createdAt }}</p>
+        <div class="mt-4 flex space-x-2">
+          <button (click)="editNote(note)"
+            class="bg-green-500 text-white rounded-md px-2 py-1 shadow hover:bg-green-600 transition">Edit</button>
+          <button (click)="deleteNote(note)"
+            class="bg-red-500 text-white rounded-md px-2 py-1 shadow hover:bg-red-600 transition">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-note-modal *ngIf="isModalOpen" (noteCreated)="addNote($event)" (click)="isModalOpen = false"></app-note-modal>
+</div>

@@ -1,0 +1,47 @@
+:host {
+    display: block;
+    height: 100%;
+    max-height: 900px;
+    overflow: hidden;
+    background-color: powderblue;
+    color: crimson;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 0;
+}
+
+.sidenav-header {
+    padding-top: 16px;
+    text-align: center;
+}
+
+.sidenav-header img {
+    border-radius: 100%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.header-text h2 {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1rem;
+}
+
+.hide-header-text {
+    opacity: 0;
+    height: 0px;
+}
+
+.menu-container {
+    padding-top: 20cm;
+    /* Add 20cm space from header */
+}
+
+.menu-item {
+    padding: 2px 8px;
+    margin: 0;
+}
+
+.menu-item mat-icon {
+    margin-right: 20px;
+    margin-left: 20px;
+}

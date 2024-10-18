@@ -1,0 +1,17 @@
+<div class="relative">
+    <!-- Display image if available, otherwise show the initials -->
+    <img *ngIf="profileImage; else initialsTemplate" [src]="profileImage" alt="User Avatar"
+        class="w-10 h-10 rounded-full">
+
+    <!-- Fallback to initials if no profile image -->
+    <ng-template #initialsTemplate>
+        <div class="w-10 h-10 rounded-full bg-gray-500 text-white flex items-center justify-center">
+            {{ initials }}
+        </div>
+    </ng-template>
+
+    <!-- Online status indicator -->
+    <span class="absolute bottom-0 left-7 w-3.5 h-3.5 rounded-full border-2 border-white dark:border-gray-800"
+        [ngClass]="{'bg-green-400': isOnline, 'bg-red-400': !isOnline}">
+    </span>
+</div>
